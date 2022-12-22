@@ -1,0 +1,110 @@
+{% extends "layout/main.html" %}
+{% block content %}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Create Blog</h2>
+          <ol>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('blog_home') }}">Blog</a></li>
+          </ol>
+        </div>
+
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog creation ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div >
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+
+                   <div class="col-md-4 mt-3">
+                    <div class="form-group">
+                        {{ form.category.label(class="form-control-label") }}
+                        {% if form.category.errors %}
+                            {{ form.category(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.title.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.category(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                   </div>
+                    
+                   <div class="col-md-8">
+
+                    <div class="form-group mt-3">
+                        {{ form.title.label(class="form-control-label") }}
+                        {% if form.title.errors %}
+                            {{ form.title(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.title.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.title(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+
+                    
+
+                    <div class="form-group mt-3">
+                        {{ form.content.label(class="form-control-label") }}
+                        {% if form.content.errors %}
+                            {{ form.content(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.content.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.content(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+
+                   </div>
+
+                   <div class="form-group mt-3">
+                    {{ form.image.label(class="form-control-label") }}
+                    {% if form.image.errors %}
+                        {{ form.image(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.image.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.image(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+               </div>
+
+                </fieldset>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info mt-3") }}
+                </div>
+            </form>
+        </div>
+                   
+                   
+     </div>
+     </section>
+
+              
+  </main><!-- End #main -->
+
+{% endblock content %}
